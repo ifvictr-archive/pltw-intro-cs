@@ -16,6 +16,7 @@ def prompt(question, correct_answer):
         print("That's correct! :)")
     else:
         print("That's wrong... :P")
+    print("You've gotten " + str(total_correct) + " question(s) correct.")
 
 def result():
     """
