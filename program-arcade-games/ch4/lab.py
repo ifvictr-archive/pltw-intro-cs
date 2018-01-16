@@ -147,6 +147,27 @@ Q. Quit
     user_choice = raw_input("Your choice? ")
     return user_choice.upper()
 
+def restart():
+    """
+    Restarts the current game for a new game
+    """
+    global done
+    global player
+    global native
+
+    done = False
+    player = {
+        "camel_tiredness": 0,
+        "player_dead": False,
+        "player_thirst": 0,
+        "total_canteens": 5,
+        "total_drank": 0,
+        "total_traveled": 0
+    }
+    native = {
+        "total_traveled": -20
+    }
+
 def rest():
     """
     Rests player's camel and moves natives up 7 <= x <= 14
@@ -167,3 +188,8 @@ while not done:
     user_choice = prompt_user()
     handle_user_choice(user_choice)
     notify_user()
+    # If the current game is finished, ask player if they want to play again
+    if done:
+        play_again = raw_input("Would you like to play again? (y/n)")
+        if play_again.lower() == "y":
+            restart()
