@@ -53,7 +53,7 @@ def handle_user_choice(choice):
     else:
         print("Not a valid choice!")
 
-def move_ahead(who, level = "moderate"):
+def move_ahead(who, level="moderate"):
     """
     Moves either the player or natives ahead
     """
@@ -125,9 +125,9 @@ Drinks in canteen: {drinks}
 The natives are {miles_ahead} mile(s) behind you.
     """
     message = message.format(
-        miles = player["total_traveled"],
-        drinks = player["total_canteens"],
-        miles_ahead = get_distance_between()
+        miles=player["total_traveled"],
+        drinks=player["total_canteens"],
+        miles_ahead=get_distance_between()
     )
 
     print(message)
