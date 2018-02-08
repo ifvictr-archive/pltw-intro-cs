@@ -51,7 +51,7 @@ while not done:
     choice = input("Which direction do you want to head into? ")
     choice = choice.lower()
 
-    # Find the other room that can be accessed from current room
+    # Check user choice and perform appropriate actions
     if choice == "n":
         next_room = ROOMS[current_room][1]
     elif choice == "e":
