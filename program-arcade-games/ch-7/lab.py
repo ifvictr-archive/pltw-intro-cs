@@ -68,7 +68,7 @@ while not done:
 
     # Check if the next room is accessible
     if next_room is None:
-        print("Can't move there!")
+        print("There's no place to go in that direction. Can't move there!")
     else:
         current_room = next_room
 
