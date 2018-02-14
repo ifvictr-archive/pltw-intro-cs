@@ -1,3 +1,26 @@
+def get_direction(letter):
+    letter = letter.lower()
+    if letter == "n":
+        return "north"
+    elif letter == "e":
+        return "east"
+    elif letter == "s":
+        return "south"
+    elif letter == "w":
+        return "west"
+
+def print_instructions():
+    print("""
+How to play:
+
+Press 'n' to move north.
+Press 'e' to move east.
+Press 's' to move south.
+Press 'w' to move west.
+Press 'i' to view instructions.
+Press 'q' to quit the game.
+    """)
+
 ROOMS = (
     # Stucture:
     # (
@@ -44,7 +67,13 @@ ROOMS = (
 current_room = 0
 done = False
 
+print("""
+Welcome to Victor's Adventure Game!
+""")
+print_instructions()
+
 while not done:
+    print()
     # Print description of room
     print(ROOMS[current_room][0])
 
@@ -60,16 +89,20 @@ while not done:
         next_room = ROOMS[current_room][3]
     elif choice == "w":
         next_room = ROOMS[current_room][4]
+    elif choice == "i":
+        print_instructions()
+        continue
     elif choice == "q":
         print("You decided to abort the adventure. Bye!")
         done = True
+        continue
     else:
         print("This doesn't seem to be valid!")
+        continue
 
     # Check if the next room is accessible
     if next_room is None:
         print("There's no place to go in that direction. Can't move there!")
     else:
         current_room = next_room
-
-    print()
+        print("You moved " + get_direction(choice) + "!")
