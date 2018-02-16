@@ -105,4 +105,4 @@ while not done:
         print("There's no place to go in that direction. Can't move there!")
     else:
         current_room = next_room
-        print("You moved " + get_direction(choice) + "!")
+        print("You moved " + get_direction(choice) + "wards!")
