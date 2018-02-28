@@ -28,7 +28,7 @@ SIZE = {"x": 1400, "y": 1000}
 pygame.init()
 pygame.display.set_caption("Chapter 8 Lab")
 
-screen = pygame.display.set_mode(SIZE.values())
+screen = pygame.display.set_mode((SIZE["x"], SIZE["y"]))
 clock = pygame.time.Clock()
 done = False
 stars = []
