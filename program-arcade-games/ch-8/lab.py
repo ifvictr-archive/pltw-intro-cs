@@ -116,7 +116,7 @@ while not done:
             comet["velocity_x"] = random.randint(-20, 20)
             comet["velocity_y"] = random.randint(5, 10)    
 
-    # Reset so objects stop moving after user stops moving mouse
+    # Reset to stop parallax effect after user is no longer moving mouse
     change_by = (0, 0)
 
     pygame.display.flip()
