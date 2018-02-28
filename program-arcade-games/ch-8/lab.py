@@ -7,7 +7,7 @@ BLUE = (37, 109, 123)
 COMET_BLUE = (204, 255, 255)
 GRAY = (162, 168, 174)
 GREEN = (113, 148, 90)
-LIGHT_VIOLET = 	(217, 221, 244)
+LIGHT_VIOLET = (217, 221, 244)
 ORANGE = (255, 102, 0)
 RED = (193, 68, 14)
 URANUS_BLUE = (209, 231, 231)
@@ -28,7 +28,7 @@ SIZE = {"x": 1400, "y": 1000}
 pygame.init()
 pygame.display.set_caption("Chapter 8 Lab")
 
-screen = pygame.display.set_mode((SIZE["x"], SIZE["y"]))
+screen = pygame.display.set_mode(SIZE.values())
 clock = pygame.time.Clock()
 done = False
 stars = []
