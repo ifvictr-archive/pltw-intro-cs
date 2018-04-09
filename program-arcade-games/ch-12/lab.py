@@ -40,7 +40,6 @@ class Rectangle(Shape):
 class Triangle(Shape):
     def __init__(self):
         super().__init__()
-        # TODO: Find better attribute names
         self.extra_width = random.randint(-20, 20)
         self.extra_height = random.randint(-20, 20)
 
