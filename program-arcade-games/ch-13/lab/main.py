@@ -1,7 +1,6 @@
 import pygame
 import random
 
-BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GREEN = (0, 255, 0)
 RED = (255, 0, 0)
@@ -12,8 +11,6 @@ class Block(pygame.sprite.Sprite):
     def __init__(self, color, width, height):
         super().__init__()
         self.image = pygame.Surface([width, height])
-        self.image.fill(WHITE)
-        self.image.set_colorkey(WHITE)
         self.rect = self.image.get_rect()
 
         pygame.draw.rect(self.image, color, [0, 0, width, height])
@@ -32,14 +29,13 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
         self.image = pygame.Surface([15, 15])
-        self.image.fill(BLACK)
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
         self.change_x = 0
         self.change_y = 0
 
-        pygame.draw.rect(self.image, BLUE, [0, 0, 15, 15])
+        pygame.draw.rect(self.image, BLUE, [0, 0, x, y])
  
     def change_speed(self, x, y):
         self.change_x += x
@@ -63,9 +59,11 @@ class Player(pygame.sprite.Sprite):
 
 
 pygame.init()
+pygame.font.init()
 
 screen = pygame.display.set_mode((SIZE["x"], SIZE["y"]))
 clock = pygame.time.Clock()
+font = pygame.font.SysFont("arial", 30)
 good_block_sound = pygame.mixer.Sound("good_block.wav")
 bad_block_sound = pygame.mixer.Sound("bad_block.wav")
 bump_sound = pygame.mixer.Sound("bump.wav")
@@ -76,14 +74,14 @@ bad_blocks = pygame.sprite.Group()
 sprites = pygame.sprite.Group()
 
 # Populate blocks and sprites
-for _ in range(50):
+for _ in range(100):
     block = Block(GREEN, 20, 15)
     block.rect.x = random.randint(0, SIZE["x"])
     block.rect.y = random.randint(0, SIZE["y"])
 
     good_blocks.add(block)
     sprites.add(block)
-for _ in range(50):
+for _ in range(100):
     block = Block(RED, 20, 15)
     block.rect.x = random.randint(0, SIZE["x"])
     block.rect.y = random.randint(0, SIZE["y"])
@@ -92,7 +90,7 @@ for _ in range(50):
     sprites.add(block)
 
 # Add player
-player = Player(20, 20)
+player = Player(random.randint(0, SIZE["x"]), random.randint(0, SIZE["y"]))
 sprites.add(player)
 
 while not done:
@@ -132,6 +130,10 @@ while not done:
         bad_block_sound.play()
 
     sprites.draw(screen)
+
+    # Display score
+    score_display = font.render("Score: %d" % score, False, (0, 0, 0))
+    screen.blit(score_display, (10, 10))
 
     pygame.display.flip()
     clock.tick(60)
